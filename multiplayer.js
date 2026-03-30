@@ -1,5 +1,6 @@
 ﻿// --- Multiplayer Lobby System (Firebase-based) ---
-import { collection, doc, getDocs, setDoc, updateDoc, deleteDoc, onSnapshot, query, where, orderBy } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
+import { db } from "./firebase-config.js"; // Your config
+import { collection, addDoc, onSnapshot, query, orderBy } from "firebase/firestore";
 
 const db = window.db;
 const roomsCollection = collection(db, 'rooms');
