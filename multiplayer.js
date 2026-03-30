@@ -238,3 +238,7 @@ function toggleEye(inputId, eyeIcon) {
   }
 }
 
+window.openRoomMaker = openRoomMaker;
+window.closeJoinModal = () => {
+    document.getElementById('room-modal').style.display = 'none';
+};
