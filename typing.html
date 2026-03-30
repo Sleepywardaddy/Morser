@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morse Pro | Typing Test</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body class="typing-body">
+    <audio id="type-sound" preload="auto">
+        <source src="assets/sounds/tap.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="morse-beep" loop preload="auto">
+        <source src="assets/sounds/hold.mp3" type="audio/mpeg">
+    </audio>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">📻 Morse<span>Pro</span></div>
+            <div class="nav-links">
+                <a href="index.html">1.Practice</a>
+                <a href="multiplayer.html">2.Multiplayer</a>
+                <a href="radio.html">3.Radio</a>
+                <a href="typing.html" class="active">4.SpeedTest</a>
+                <a href="writing.html">5.FreeWriting</a>
+            </div>
+            <div class="user-profile">
+                <div class="user-info">
+                    <span id="user-display-name">Guest</span>
+
+                </div>
+                <div class="user-avatar"></div>
+            </div>
+
+            <div id="name-modal" class="modal-overlay">
+                <div class="modal-content">
+                    <h3>Enter Your Callsign</h3>
+                    <input type="text" id="name-input" placeholder="Enter name..." maxlength="12">
+                    <div class="modal-buttons">
+                        <button id="cancel-btn" class="btn-secondary">Cancel</button>
+                        <button id="save-btn" class="btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="typing-container">
+        <div class="typing-stats-bar">
+            <div class="stat-box timer">Time: <span id="timer">1:00</span></div>
+            <button onclick="resetTypingTest()" class="restart-icon-btn">↻</button>
+        </div>
+
+        <div class="word-queue-card" id="word-display"></div>
+
+        <div class="input-row-vertical">
+            <div class="qwerty-input-wrapper">
+                <div id="typing-display-area" class="typing-display">
+                    <span id="typed-text"></span>
+                    <span id="morse-cursor"></span>
+
+                    <div id="typing-display-area" class="typing-display">
+                        <span id="typed-text"></span>
+                        <span id="morse-cursor"></span>
+
+                        <button id="backspace-btn" onclick="clearCurrentMorse()">PressBtoErase</button>
+                    </div>
+                </div>
+                <input type="text" id="typing-input" class="hidden-logic-input" readonly>
+            </div>
+
+            <div id="tap-zone-typing" class="large-tap-zone">
+                HOLD SPACEBAR OR TAP HERE TO TYPE MORSE
+            </div>
+
+            <button onclick="resetTypingTest()" class="reset-btn-wide">Restart Test</button>
+        </div>
+
+        <div class="ui-mask"></div>
+
+        <div id="result-modal" class="modal hidden">
+            <div class="modal-content result-card-styled">
+                <div id="capture-area"
+                    style="background: white; padding: 10px; border-radius: 20px; border: 1px solid #e2e8f0;">
+
+                    <button onclick="closeModal()"
+                        style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 24px; color: #94a3b8; cursor: pointer; font-weight: bold; z-index: 10;">×</button>
+
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span style="font-weight: 900; color: #1e40af;">📻 MorsePro.io</span>
+                        <span style="font-size: 10px; color: #94a3b8; font-weight: bold;">OFFICIAL RESULT</span>
+                    </div>
+
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <span id="final-wpm"
+                            style="font-size: 5rem; font-weight: 900; color: #15803d; display: block; line-height: 1;">0</span>
+                        <span style="font-weight: 800; color: #64748b; letter-spacing: 2px;">WPM</span>
+                    </div>
+
+                    <table style="width: 100%; margin-bottom: 25px; border-collapse: collapse;">
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 8px 0; color: #475569;">Total Karakter</td>
+                            <td id="total-chars" style="text-align: right; font-weight: bold;">0</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 8px 0; color: #475569;">Ketepatan</td>
+                            <td id="final-accuracy" style="text-align: right; font-weight: bold;">0%</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 8px 0; color: #475569;">Kata Benar</td>
+                            <td id="correct-words-count" style="text-align: right; font-weight: bold; color: #15803d;">0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 0; color: #475569;">Kata Salah</td>
+                            <td id="wrong-words-count" style="text-align: right; font-weight: bold; color: #be123c;">0
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div id="performance-rank"
+                        style="background: #fdfdfd; border: 2px dashed #e2e8f0; border-radius: 15px; padding: 5px; text-align: center;">
+                        <div id="rank-emoji" style="font-size: 2rem; margin-bottom: 5px;">🐣</div>
+                        <div id="rank-text"
+                            style="font-weight: 900; font-size: 1rem; color: #1e293b; text-transform: uppercase;">Ayo
+                            Mulai!</div>
+                    </div>
+                </div>
+
+                <div class="result-actions-row" style="margin-top: 20px; display: flex; gap: 10px;">
+                    <button onclick="shareAsImage()"
+                        style="flex: 2; background: #2563eb; color: white; border: none; padding: 15px; border-radius: 10px; font-weight: bold; cursor: pointer;">🖼️
+                        Simpan Hasil</button>
+                    <button onclick="resetTypingTest()"
+                        style="flex: 1; background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; padding: 15px; border-radius: 10px; font-weight: bold; cursor: pointer;">↻
+                        Ulang</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-score-area">
+            <span id="final-wpm">0</span>
+            <label>WPM</label>
+            <p>(kata per menit)</p>
+        </div>
+
+        <table class="result-stats-table">
+            <tr>
+                <td>Total Karakter</td>
+                <td id="total-chars">0</td>
+            </tr>
+            <tr>
+                <td>Ketepatan</td>
+                <td id="final-accuracy">0%</td>
+            </tr>
+            <tr>
+                <td>Kata yang Benar</td>
+                <td id="correct-words-count" class="text-success">0</td>
+            </tr>
+            <tr>
+                <td>Kata yang Salah</td>
+                <td id="wrong-words-count" class="text-danger">0</td>
+            </tr>
+        </table>
+        </div>
+
+        <div class="result-actions-row">
+            <button onclick="shareAsImage()" class="share-btn-blue">🖼️ Screenshot Result</button>
+            <button onclick="resetTypingTest()" class="retry-btn-gray">↻ Try Again</button>
+        </div>
+        </div>
+        </div>
+    </main>
+
+    <script src="typing.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body>
+
+</html>

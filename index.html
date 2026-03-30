@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morse Pro | Master the Code</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">📻 Morse<span>Pro</span></div>
+
+            <div class="nav-links">
+                <a href="index.html" class="active">1.Practice</a>
+                <a href="multiplayer.html">2.Multiplayer</a>
+                <a href="radio.html">3.Radio</a>
+                <a href="typing.html">4.SpeedTest</a>
+                <a href="writing.html">5.FreeWriting</a>
+            </div>
+
+            <div class="user-profile">
+                <div class="user-info">
+                    <span id="user-display-name">Guest</span>
+                    <button id="edit-profile-btn" class="icon-btn">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                </div>
+                <div class="user-avatar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="home-hero">
+        <div class="hero-content">
+            <h1>Learn Morse Code <br>by <span>Tapping.</span></h1>
+            <p>The ultimate trainer for speed, accuracy, and professional communication.</p>
+            <p>Just kidding I was bored, I literally would do anything but my thesis. :p</p>
+            <div class="hero-actions">
+                <button onclick="openPractice()" class="primary-btn">Start Training</button>
+                <a href="typing.html" class="secondary-btn">Test Speed</a>
+            </div>
+        </div>
+
+        <div id="practice-sheet" class="full-screen-sheet hidden">
+            <div class="sheet-header">
+                <button onclick="closePractice()" class="back-btn">← Exit Practice</button>
+                <div class="sheet-title">Morse Practice</div>
+                <div></div>
+            </div>
+
+            <div class="practice-layout-grid">
+
+                <aside class="cheat-sheet-sidebar side-left">
+                    <h3>Numbers</h3>
+                    <div id="num-ref-grid" class="mini-grid-fit"></div>
+                </aside>
+
+                <div class="practice-main">
+                    <div class="practice-nav">
+                        <div class="mode-selectors">
+                            <button onclick="setSubMode('alpha')" id="sub-alpha"
+                                class="mode-btn active">Letters</button>
+                            <button onclick="setSubMode('words')" id="sub-words" class="mode-btn">Words</button>
+                            <button onclick="setSubMode('numbers')" id="sub-numbers" class="mode-btn">Numbers</button>
+                        </div>
+                    </div>
+
+                    <div class="practice-box">
+                        <h1 id="target-display">--</h1>
+                        <div id="hint-display" class="hint-text-large"></div>
+                        <div class="input-area">
+                            <div id="input-preview" class="morse-preview"></div>
+                            <div id="tap-zone" class="large-tap-zone">
+                                HOLD SPACEBAR OR TAP HERE
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="practice-footer">
+                        <button id="btn-hint-toggle" onclick="toggleHint()" class="tool-btn">💡 Hint: ON</button>
+                    </div>
+                </div>
+
+                <aside class="cheat-sheet-sidebar side-right">
+                    <h3>Letters</h3>
+                    <div id="alpha-ref-grid" class="alpha-three-column"></div>
+                </aside>
+            </div>
+        </div>
+        <div class="side-panel">
+            <div class="stat-card">
+                <h3>Global High Score</h3>
+                <div id="leaderboard-preview">Loading...</div>
+            </div>
+        </div>
+    </main>
+    </div>
+    <script src="script.js"></script>
+
+    <div id="name-modal" class="modal-overlay">
+    <div class="modal-content">
+        <h3>Operator Registration</h3>
+        <p>Please enter your callsign to begin.</p>
+        
+        <input type="text" id="name-input" placeholder="e.g. K1AAA" maxlength="10">
+        
+        <div class="modal-actions">
+            <button id="cancel-btn" class="btn-secondary">Skip</button>
+            <button id="save-btn" class="btn-primary">Save Callsign</button>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

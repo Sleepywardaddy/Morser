@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplayer | MorsePro Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="multiplayer.css">
+    <link rel="icon" href="data:,">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js';
+        import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
+        window.firebaseApp = initializeApp({
+            apiKey: "your-api-key",
+            authDomain: "your-project.firebaseapp.com",
+            projectId: "your-project-id",
+            storageBucket: "your-project.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "your-app-id"
+        });
+        window.db = getFirestore(window.firebaseApp);
+    </script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">📻 Morse<span>Pro</span></div>
+            <div class="nav-links">
+                <a href="index.html">1.Practice</a>
+                <a href="multiplayer.html" class="active">2.Multiplayer</a>
+                <a href="radio.html">3.Radio</a>
+                <a href="typing.html">4.SpeedTest</a>
+                <a href="writing.html">5.FreeWriting</a>
+            </div>
+            <div class="user-profile">
+                <div class="user-info">
+                    <span id="user-display-name">Guest</span>
+                </div>
+                <div class="user-avatar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="name-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3>Enter Your Callsign</h3>
+            <input type="text" id="name-input" placeholder="Enter name..." maxlength="12">
+            <div class="modal-buttons">
+                <button id="cancel-btn" class="btn-secondary">Cancel</button>
+                <button id="save-btn" class="btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-layout" style="padding-top: 100px; max-width: 1200px; margin: 0 auto; padding: 20px;">
+        <div class="vault-header"
+            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h2 style="color: #3b82f6;"><i class="fas fa-satellite-dish"></i> ACTIVE FREQUENCIES</h2>
+            <button class="play-btn" onclick="openRoomMaker()" style="padding: 10px 20px; border-radius: 8px;">
+                <i class="fas fa-plus"></i> CREATE ROOM
+            </button>
+        </div>
+
+        <div id="room-ticket-grid" class="ticket-grid"></div>
+    </div>
+
+    <div id="room-maker-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h2 style="margin-bottom: 20px;">ESTABLISH FREQUENCY</h2>
+            
+            <div style="margin-bottom: 15px;">
+                <label style="color: #94a3b8; font-size: 0.8rem; display: block; text-align: left; margin-bottom: 5px;">FREQUENCY NAME</label>
+                <input type="text" id="maker-room-name" placeholder="e.g. ALPHA-9"
+                    style="width: 100%; padding: 12px; background: #0f172a; border: 1px solid #334155; color: white; border-radius: 8px; outline: none;">
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <div style="flex: 1; text-align: left;">
+                    <label style="color: #94a3b8; font-size: 0.8rem; display: block; margin-bottom: 5px;">MAX OPS</label>
+                    <select id="maker-player-limit"
+                        style="width: 100%; padding: 10px; background: #0f172a; border: 1px solid #334155; color: white; border-radius: 8px;">
+                        <option value="2">2 Players</option>
+                        <option value="4">4 Players</option>
+                        <option value="8">8 Players</option>
+                        <option value="12">12 Players</option>
+                    </select>
+                </div>
+                <div style="flex: 1; text-align: left;">
+                    <label style="color: #94a3b8; font-size: 0.8rem; display: block; margin-bottom: 5px;">TOPIC</label>
+                    <select id="maker-topic"
+                        style="width: 100%; padding: 10px; background: #0f172a; border: 1px solid #334155; color: white; border-radius: 8px;">
+                        <option value="common">Common Words</option>
+                        <option value="anime">Anime Characters</option>
+                        <option value="brands">Brands</option>
+                        <option value="food">Food</option>
+                        <option value="superheroes">Superheroes</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 8px;">
+                <div style="display: flex; flex-direction: column; text-align: left;">
+                    <span style="color: #94a3b8; font-size: 0.8rem;">SECURE CHANNEL</span>
+                    <span style="color: #64748b; font-size: 0.7rem;">(PRIVATE ACCESS)</span>
+                </div>
+                <label class="ops-switch">
+                    <input type="checkbox" id="maker-is-private" onchange="togglePasswordField()">
+                    <span class="ops-slider"></span>
+                </label>
+            </div>
+
+            <div id="password-input-group" class="hidden" style="margin-bottom: 15px; text-align: left;">
+                <label style="color: #94a3b8; display: block; margin-bottom: 5px; font-size: 0.75rem;">ENTRY KEY</label>
+                <div class="pass-wrapper" style="position: relative;">
+                    <input type="password" id="maker-password" placeholder="••••"
+                        style="width: 100%; padding: 10px; padding-right: 40px; background: #0f172a; border: 1px solid #3b82f6; color: white; border-radius: 8px; font-family: monospace;">
+                    <i class="fas fa-eye toggle-eye" onclick="toggleEye('maker-password', this)"
+                        style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #64748b; cursor: pointer;"></i>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <button onclick="closeRoomMaker()" class="btn-secondary" style="flex:1">CANCEL</button>
+                <button onclick="confirmCreateRoom()" class="btn-primary" style="flex:1">OPEN FREQUENCY</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="join-lock-modal" class="modal-overlay hidden">
+        <div class="modal-content" style="max-width: 350px; text-align: center;">
+            <i class="fas fa-shield-halved" style="font-size: 2rem; color: #ef4444; margin-bottom: 10px;"></i>
+            <h3>Frequency Encrypted</h3>
+            <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 15px;">Please enter the Entry Key</p>
+            <div class="pass-wrapper" style="position: relative; margin-bottom: 15px;">
+                <input type="password" id="join-pass-input" placeholder="••••"
+                    style="width: 100%; padding: 10px; padding-right: 40px; text-align: center; background: #0f172a; border: 1px solid #334155; color: white; border-radius: 8px; font-family: monospace;">
+                <i class="fas fa-eye toggle-eye" onclick="toggleEye('join-pass-input', this)"
+                    style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #64748b; cursor: pointer;"></i>
+            </div>
+            <div class="modal-buttons" style="display: flex; gap: 10px;">
+                <button onclick="closeJoinModal()" class="btn-secondary" style="flex:1">Abort</button>
+                <button onclick="submitJoinPassword()" class="btn-primary" style="flex:1">Connect</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="multiplayer.js"></script>
+</body>
+
+</html>

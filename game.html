@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal Intercept | MorsePro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="game.css">
+    <link rel="icon" href="data:,">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js';
+        import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
+        window.firebaseApp = initializeApp({
+            apiKey: "your-api-key",
+            authDomain: "your-project.firebaseapp.com",
+            projectId: "your-project-id",
+            storageBucket: "your-project.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "your-app-id"
+        });
+        window.db = getFirestore(window.firebaseApp);
+    </script>
+</head>
+
+<body class="role-sender">
+
+    <div class="game-layout">
+        <main class="transmitter-section">
+            <div class="top-bar">
+                <div id="timer">10:00</div>
+                <div id="task-display" class="task-box">WAITING FOR MISSION...</div>
+                <div class="score-box">SCORE: <span id="my-score">0</span></div>
+            </div>
+
+            <div class="oscilloscope-box">
+                <div class="scanner-line"></div>
+                <div id="signal-buffer"></div>
+            </div>
+
+            <div class="control-deck">
+                <div class="key-wrapper">
+                    <button class="transmission-btn" id="tap-key">
+                        <i class="fas fa-bolt"></i>
+                        <span>SPACEBAR</span>
+                    </button>
+                    <button class="clear-btn" onclick="clearBuffer()" title="Clear (Backspace)">
+                        <i class="fas fa-backspace"></i>
+                    </button>
+                </div>
+
+                <div class="transmit-controls">
+                    <p class="hint-text">ENCODE SIGNAL • [ENTER] TO TRANSMIT</p>
+                    <button class="send-btn" id="send-btn" onclick="sendTransmission()">
+                        <i class="fas fa-paper-plane"></i> TRANSMIT SIGNAL
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <aside class="comms-sidebar">
+            <div class="sidebar-panel">
+                <div class="panel-header">RANKINGS</div>
+                <ul id="leaderboard-list"></ul>
+            </div>
+
+            <div class="sidebar-panel">
+                <div class="panel-header">OPERATORS <span id="player-count">--/--</span></div>
+                <ul id="operator-list"></ul>
+            </div>
+
+            <div class="sidebar-panel chat-panel">
+                <div class="panel-header">INTERCEPT LOG</div>
+                <div id="chat-messages">
+                    <div class="msg system">[SYSTEM]: Frequency secured.</div>
+                </div>
+                <div class="chat-input-wrapper">
+                    <input type="text" id="chat-input" placeholder="Type to intercept..." autocomplete="off">
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <button onclick="showExitModal()" class="btn-danger">EXIT LOBBY</button>
+
+    <button onclick="confirmExit()" class="btn-danger">EXIT LOBBY</button>
+
+    <div id="exit-modal" class="modal hidden">
+        <div class="modal-content">
+            <h1 style="color: var(--accent-red);">ABANDON MISSION?</h1>
+            <p>You can rejoin in 10 seconds before the room vanish.</p>
+            <div class="btn-group">
+                <button onclick="executeExit()" class="btn-danger">YES, EXIT</button>
+                <button onclick="closeExitModal()" class="btn-primary">STAY</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="result-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="result-title">MISSION COMPLETE</h2>
+            <div id="winner-display" style="font-size: 1.5rem; margin: 15px 0;"></div>
+            <p>Restarting in: <span id="result-countdown">10</span>s</p>
+            <div class="modal-btns">
+                <button id="agree-restart-btn" class="btn-primary">VOTE RESTART</button>
+                <button onclick="executeExit()" class="btn-secondary">LEAVE</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="how-to-play-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>MISSION BRIEFING</h2>
+            <div style="display: flex; gap: 20px;">
+                <div class="side">
+                    <h3>SENDER</h3>
+                    <p>Transmit the target word using Spacebar.</p>
+                </div>
+                <div class="side">
+                    <h3>RECEIVER</h3>
+                    <p>Type the intercepted word in chat.</p>
+                </div>
+            </div>
+            <hr>
+            <label><input type="checkbox" id="dont-show-today"> Don't show again today</label>
+            <button onclick="closeInstructions()">I UNDERSTAND</button>
+        </div>
+    </div>
+
+    <div id="waiting-overlay" class="waiting-screen">
+        <div class="waiting-content">
+            <div class="loader-ring"></div>
+            <h2 id="waiting-status-text">ESTABLISHING CONNECTION...</h2>
+            <p>MISSION WILL BEGIN ONCE ALL OPERATORS JOIN THE FREQUENCY</p>
+            <button onclick="executeExit()" class="abort-btn">ABORT MISSION</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+
+</html>

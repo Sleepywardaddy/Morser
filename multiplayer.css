@@ -1,0 +1,512 @@
+:root {
+    --primary: #3b82f6;
+    --dark: #1e293b;
+    --light-bg: #f1f5f9;
+    --white: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+
+body { background-color: var(--light-bg); color: var(--dark); line-height: 1.6; }
+
+/* --- Layout --- */
+.container {
+    max-width: 480px; 
+    margin: 3rem auto; 
+    padding: 2rem;
+    background: var(--card-bg); 
+    border-radius: 24px; 
+    border: 1px solid var(--border);
+    text-align: center; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* Navbar */
+/* --- Standard Navbar (Paste this in all CSS files) --- */
+.navbar {
+    background: #1e293b; /* Using var(--dark) hex for stability */
+    color: #ffffff;
+    padding: 0.8rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 1:1:1 Balance - Logo(Left), Links(Center), Profile(Right) */
+.logo {
+    flex: 1; 
+    display: flex;
+    align-items: center;
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: -1px;
+}
+
+.logo span { color: #3b82f6; } /* Primary Blue */
+
+.nav-links {
+    flex: 2; /* Center gets more space */
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+}
+
+.nav-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #ffffff;
+}
+
+.user-profile {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: #3b82f6; /* Pencil button color */
+    cursor: pointer;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    transition: 0.2s;
+}
+
+.icon-btn:hover { opacity: 1; transform: scale(1.1); }
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    background: #334155;
+    border-radius: 50%;
+    border: 2px solid #475569;
+}
+
+/* Clean up the user-info to keep name and pencil together */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    user-select: none; /* As requested: prevents blue highlight */
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.icon-btn:hover { opacity: 1; }
+
+/*profile*/
+/* Navbar */
+.navbar {
+    background: var(--dark);
+    color: var(--white);
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px; /* Or whatever your page width is */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Force Logo to take up equal space on the left */
+.logo {
+    flex: 1; 
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Links stay in the middle */
+.nav-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex: 2; /* Gives center more priority to stay centered */
+}
+
+/* Force Profile to take up equal space on the right */
+.user-profile {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Pushes content to the far right */
+    gap: 12px;
+}
+
+/* Clean up the user-info to keep name and pencil together */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    user-select: none; /* As requested: prevents blue highlight */
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.icon-btn:hover { opacity: 1; }
+
+/*profile*/
+
+
+.logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
+.logo span { color: var(--primary); }
+
+.nav-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active { color: var(--white); }
+
+.nav-user { display: flex; align-items: center; gap: 10px; font-weight: bold; }
+.edit-user-btn { background: none; border: none; color: var(--primary); cursor: pointer; }
+
+/* Lobby Card (Ticket) Design */
+/* --- COMPACT MORSE VAULT --- */
+/* --- NEON MODULE VAULT --- */
+.ticket-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Tiny tiles */
+    gap: 12px;
+    width: 100%;
+}
+
+.room-card {
+    background: #0f172a; /* Deep dark blue */
+    border: 1px solid #1e293b;
+    border-top: 3px solid #3b82f6; /* Vivid accent top */
+    border-radius: 4px;
+    padding: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 180px; /* Fixed small height */
+    transition: 0.2s ease-in-out;
+}
+
+.room-card:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+    transform: scale(1.02);
+}
+
+/* FIX: High-contrast visibility for text */
+.room-id {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    color: #ffffff; /* Grayish blue for meta-data */
+    text-transform: uppercase;
+}
+
+.room-name {
+    color: #f8fafc; /* Near white */
+    font-size: 0.85rem;
+    font-weight: 800;
+    margin: 4px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* VIVID PLAYER COUNT */
+.player-count-box {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 8px 0;
+    color: #f1f5f9;
+
+}
+
+.player-pill {
+    color: aliceblue;
+    margin: auto;
+}
+
+/* THE FIX: Vivid Green/Cyan for visibility */
+
+.room-topic-tag {
+    font-size: 0.6rem;
+    color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+    padding: 2px 6px;
+    border-radius: 2px;
+    width: fit-content;
+}
+
+.join-btn {
+    width: 100%;
+    margin-top: 10px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #f8fafc;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 6px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.join-btn:hover {
+    background: #3b82f6;
+    border-color: #3b82f6;
+}
+
+/* Modal Overlay Styling */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #334155;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+}
+
+.hidden { display: none !important; }
+
+/*pass*/
+/* --- TOGGLE SWITCH --- */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 22px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #334155;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #3b82f6;
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+/* --- LOCK MODAL STYLING --- */
+#join-lock-modal .modal-content {
+    border-top: 4px solid #ef4444; /* Vivid Red for "Locked" */
+    text-align: center;
+}
+
+#join-pass-input {
+    letter-spacing: 5px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.lock-indicator {
+    color: #ef4444;
+    margin-left: 8px;
+    font-size: 0.8rem;
+}
+
+/* Utility to hide elements */
+.hidden {
+    display: none !important;
+}
+
+/*eyepass*/
+.toggle-eye {
+    transition: color 0.2s ease;
+}
+
+.toggle-eye:hover {
+    color: #f8fafc !important; /* Brighter on hover */
+}
+
+/* Ensure the text doesn't overlap the icon */
+.pass-wrapper input {
+    padding-right: 40px !important;
+}
+
+#maker-topic:hover {
+    border-color: #3b82f6; /* Glows blue when you're about to pick a topic */
+    transition: border 0.2s ease;
+}
+
+/* --- CUSTOM TOGGLE SWITCH --- */
+.ops-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 22px;
+}
+
+.ops-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.ops-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #334155;
+    transition: .3s;
+    border-radius: 34px;
+}
+
+.ops-slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+}
+
+input:checked + .ops-slider {
+    background-color: #3b82f6; /* Tactical Blue */
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+input:checked + .ops-slider:before {
+    transform: translateX(22px);
+}
+
+/* --- STYLIZED MODAL BUTTONS --- */
+.btn-primary, .btn-secondary {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: #3b82f6;
+    color: white;
+    box-shadow: 0 4px 0 #2563eb; /* 3D depth effect */
+}
+
+.btn-primary:hover {
+    background: #60a5fa;
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+.btn-secondary {
+    background: #1e293b;
+    color: #94a3b8;
+    border: 1px solid #334155;
+}
+
+.btn-secondary:hover {
+    background: #334155;
+    color: white;
+}
+
+@keyframes pulse-red {
+    0% { opacity: 0.7; }
+    50% { opacity: 0.3; }
+    100% { opacity: 0.7; }
+}
+
+.ghost-mode {
+    animation: pulse-red 1s infinite;
+    background: rgba(239, 68, 68, 0.05) !important;
+}

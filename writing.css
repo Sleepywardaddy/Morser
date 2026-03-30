@@ -1,0 +1,318 @@
+:root {
+    --primary: #3b82f6;
+    --dark: #1e293b;
+    --light-bg: #f1f5f9;
+    --white: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+
+body { background-color: var(--light-bg); color: var(--dark); line-height: 1.6; }
+
+/* --- Layout --- */
+.container {
+    max-width: 480px; 
+    margin: 3rem auto; 
+    padding: 2rem;
+    background: var(--card-bg); 
+    border-radius: 24px; 
+    border: 1px solid var(--border);
+    text-align: center; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* --- Navbar --- */
+/* Navbar */
+/* --- Standard Navbar (Paste this in all CSS files) --- */
+.navbar {
+    background: #1e293b; /* Using var(--dark) hex for stability */
+    color: #ffffff;
+    padding: 0.8rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 1:1:1 Balance - Logo(Left), Links(Center), Profile(Right) */
+.logo {
+    flex: 1; 
+    display: flex;
+    align-items: center;
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: -1px;
+}
+
+.logo span { color: #3b82f6; } /* Primary Blue */
+
+.nav-links {
+    flex: 2; /* Center gets more space */
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+}
+
+.nav-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #ffffff;
+}
+
+.user-profile {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: #3b82f6; /* Pencil button color */
+    cursor: pointer;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    transition: 0.2s;
+}
+
+.icon-btn:hover { opacity: 1; transform: scale(1.1); }
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    background: #334155;
+    border-radius: 50%;
+    border: 2px solid #475569;
+}
+
+/* Clean up the user-info to keep name and pencil together */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    user-select: none; /* As requested: prevents blue highlight */
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.icon-btn:hover { opacity: 1; }
+
+/*profile*/
+/* Navbar */
+.navbar {
+    background: var(--dark);
+    color: var(--white);
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px; /* Or whatever your page width is */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Force Logo to take up equal space on the left */
+.logo {
+    flex: 1; 
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Links stay in the middle */
+.nav-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex: 2; /* Gives center more priority to stay centered */
+}
+
+/* Force Profile to take up equal space on the right */
+.user-profile {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Pushes content to the far right */
+    gap: 12px;
+}
+
+/* Clean up the user-info to keep name and pencil together */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    user-select: none; /* As requested: prevents blue highlight */
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.icon-btn:hover { opacity: 1; }
+
+/*profile*/
+
+
+.logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
+.logo span { color: var(--primary); }
+
+.nav-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active { color: var(--white); }
+
+.nav-user { display: flex; align-items: center; gap: 10px; font-weight: bold; }
+.edit-user-btn { background: none; border: none; color: var(--primary); cursor: pointer; }
+
+
+body.paper-theme {
+    margin: 0;
+    background-color: #dcd7c9;
+    background-image: url("https://www.transparenttextures.com/patterns/lined-paper.png");
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.paper-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.1) 100%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.paper-wrapper {
+    width: 100vw;
+    height: 100vh;
+    padding: 60px 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    touch-action: none; /* Prevents zooming/scrolling while tapping */
+}
+
+.paper-sheet {
+    width: 100%;
+    max-width: 800px;
+    font-size: 1.8rem;
+    line-height: 1.6;
+    color: var(--ink-color);
+    white-space: pre-wrap;
+    word-break: break-all;
+    position: relative; /* Essential for cursor positioning */
+}
+
+/* The Functional Cursor */
+.paper-sheet::after {
+    content: "|"; /* The cursor character */
+    color: #3b82f6;
+    margin-left: 2px;
+    font-weight: bold;
+    animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+    from, to { color: transparent; }
+    50% { color: #3b82f6; }
+}
+
+.placeholder {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(0,0,0,0.2);
+    font-style: italic;
+    font-size: 1.5rem;
+}
+
+#input-preview {
+    position: fixed;
+    bottom: 40px;
+    font-size: 2rem;
+    color: #3b82f6;
+    letter-spacing: 5px;
+    font-weight: bold;
+}
+
+.typewriter-cursor {
+    display: inline-block;
+    width: 10px;
+    color: #3b82f6;
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/*swap*/
+/* Flash effect when roles switch */
+.role-swap-flash {
+    animation: flash-animation 0.5s ease-out;
+}
+
+@keyframes flash-animation {
+    0% { background-color: var(--accent-blue); }
+    100% { background-color: var(--bg-dark); }
+}
+
+/* UI adjustments based on role */
+body.role-guesser .control-deck {
+    opacity: 0.5;
+    pointer-events: none; /* Disable the Morse key for guessers */
+}
+
+body.role-sender .control-deck {
+    opacity: 1;
+    pointer-events: auto;
+}

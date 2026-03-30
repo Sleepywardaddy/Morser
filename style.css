@@ -1,0 +1,1463 @@
+:root {
+    --primary: #3b82f6;
+    --dark: #1e293b;
+    --light-bg: #f1f5f9;
+    --white: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+
+body { background-color: var(--light-bg); color: var(--dark); line-height: 1.6; }
+
+/* --- Layout --- */
+.container {
+    max-width: 480px; 
+    margin: 3rem auto; 
+    padding: 2rem;
+    background: var(--card-bg); 
+    border-radius: 24px; 
+    border: 1px solid var(--border);
+    text-align: center; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* --- Navbar --- */
+/* Navbar */
+/* --- Standard Navbar (Paste this in all CSS files) --- */
+.navbar {
+    background: #1e293b; /* Using var(--dark) hex for stability */
+    color: #ffffff;
+    padding: 0.8rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 1:1:1 Balance - Logo(Left), Links(Center), Profile(Right) */
+.logo {
+    flex: 1; 
+    display: flex;
+    align-items: center;
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: -1px;
+}
+
+.logo span { color: #3b82f6; } /* Primary Blue */
+
+.nav-links {
+    flex: 2; /* Center gets more space */
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+}
+
+.nav-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #ffffff;
+}
+
+.user-profile {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: #3b82f6; /* Pencil button color */
+    cursor: pointer;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    transition: 0.2s;
+}
+
+.icon-btn:hover { opacity: 1; transform: scale(1.1); }
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    background: #334155;
+    border-radius: 50%;
+    border: 2px solid #475569;
+}
+
+/* Clean up the user-info to keep name and pencil together */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    user-select: none; /* As requested: prevents blue highlight */
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.icon-btn:hover { opacity: 1; }
+
+/*profile*/
+/* Navbar */
+.navbar {
+    background: var(--dark);
+    color: var(--white);
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px; /* Or whatever your page width is */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Force Logo to take up equal space on the left */
+.logo {
+    flex: 1; 
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Links stay in the middle */
+.nav-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex: 2; /* Gives center more priority to stay centered */
+}
+
+/* Force Profile to take up equal space on the right */
+.user-profile {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Pushes content to the far right */
+    gap: 12px;
+}
+
+/* Clean up the user-info to keep name and pencil together */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    user-select: none; /* As requested: prevents blue highlight */
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.icon-btn:hover { opacity: 1; }
+
+/*profile*/
+
+
+.logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
+.logo span { color: var(--primary); }
+
+.nav-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active { color: var(--white); }
+
+.nav-user { display: flex; align-items: center; gap: 10px; font-weight: bold; }
+.edit-user-btn { background: none; border: none; color: var(--primary); cursor: pointer; }
+
+/* Hero Section */
+.home-hero {
+    max-width: 1100px;
+    margin: 60px auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.hero-content h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1; }
+.hero-content h1 span { color: var(--primary); }
+.hero-content p { font-size: 1.2rem; color: #64748b; margin-bottom: 30px; }
+
+.hero-actions { display: flex; gap: 15px; }
+.primary-btn { background: var(--primary); color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+.secondary-btn { background: white; border: 1px solid #cbd5e1; color: var(--dark); padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+
+/* Modal */
+.modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 1000;
+}
+.hidden { display: none; }
+.modal-content { background: white; padding: 40px; border-radius: 12px; text-align: center; max-width: 400px; width: 90%; }
+#username-input { width: 100%; padding: 12px; margin: 20px 0; border: 2px solid #e2e8f0; border-radius: 6px; }
+.confirm-btn { background: var(--primary); color: white; border: none; padding: 12px 30px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; }
+
+/* Full Screen Sheet Animation */
+.full-screen-sheet {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f8fafc;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.full-screen-sheet.hidden {
+    transform: translateY(100%); /* Slides down off screen */
+}
+
+/* Header within the sheet */
+.sheet-header {
+    padding: 20px 40px;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.back-btn { background: none; border: none; font-size: 1rem; cursor: pointer; color: #64748b; font-weight: 600; }
+.sheet-title { font-weight: 800; font-size: 1.2rem; color: #1e293b; }
+
+/* Practice Content */
+.practice-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.practice-box {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    padding: 60px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+#target-display { font-size: 6rem; margin-bottom: 10px; color: #1e293b; }
+
+.large-tap-zone {
+    margin-top: 40px;
+    height: 150px;
+    border: 3px dashed #cbd5e1;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #94a3b8;
+    cursor: pointer;
+    user-select: none;
+}
+
+.large-tap-zone:active { background: #eff6ff; border-color: #3b82f6; }
+
+.morse-preview { font-size: 2rem; height: 50px; color: #3b82f6; font-family: monospace; }
+
+/* Layout Grid for the Sheet */
+/* 3-Column Layout: [250px] [1fr] [450px] */
+.practice-layout-grid {
+    display: grid;
+    grid-template-columns: 250px 1fr 450px; 
+    height: calc(100vh - 70px);
+    overflow: hidden;
+    background: #f8fafc;
+}
+
+/* Sidebar styling */
+.cheat-sheet-sidebar {
+    background: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #e2e8f0;
+    border-left: 1px solid #e2e8f0;
+}
+
+.cheat-sheet-sidebar h3 {
+    font-size: 1rem;
+    color: #1e293b;
+    margin-bottom: 15px;
+    text-align: center;
+    border-bottom: 2px solid #3b82f6;
+    padding-bottom: 5px;
+}
+
+/* Numbers: Single Column, Large */
+.mini-grid-fit {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+}
+
+/* Letters: Divided into 3 columns */
+.alpha-three-column {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+}
+
+/* Bigger font for items */
+.mini-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 1.1rem; /* Bigger size */
+    font-family: monospace;
+}
+
+/* Game Box sizing */
+/* Reduce the overall main padding */
+.practice-main {
+    padding: 20px; /* Reduced from 40px */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevents internal leaking */
+}
+
+/* Make the mode selector box more compact */
+.practice-nav {
+    padding: 10px; /* Reduced from 15px */
+    margin-bottom: 15px; /* Tighter gap */
+}
+
+/* Constrain the main game box */
+.practice-box {
+    width: 100%;
+    max-width: 550px; /* Slightly narrower */
+    padding: 30px 20px; /* Much smaller vertical padding */
+    border-radius: 15px;
+}
+
+/* Shrink the tap zone to save vertical space */
+.large-tap-zone {
+    margin-top: 20px; /* Reduced gap */
+    height: 100px; /* Reduced from 150px */
+    font-size: 0.9rem;
+}
+
+/* Adjust the target letter size if it's pushing things down */
+#target-display {
+    font-size: 4.5rem; /* Reduced from 6rem */
+    margin-bottom: 5px;
+}
+
+/* Ensure the hint text doesn't take up too much room */
+.hint-text-large {
+    font-size: 2.2rem; /* Scaled down slightly */
+    height: 45px; 
+    margin-bottom: 10px;
+}
+
+.mode-selectors {
+    display: flex;
+    gap: 10px;
+}
+
+/* Updated Button Styles */
+.mode-btn {
+    padding: 10px 20px;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #64748b;
+}
+
+.mode-btn:hover {
+    background: #f1f5f9;
+}
+
+.mode-btn.active {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+}
+
+/* Ensure practice-main is centered */
+.practice-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/*numerical sheet practice*/
+/* Smaller Number Cheat Sheet */
+#num-ref-grid .mini-item {
+    padding: 6px 10px; /* Thinner rows */
+    font-size: 0.95rem; /* Slightly smaller text */
+    margin-bottom: 2px;
+}
+
+/* Ensure the sidebar itself doesn't have massive padding */
+.cheat-sheet-sidebar {
+    padding: 15px 10px; /* Tighter horizontal padding */
+}
+
+/* Stylized Hint Button */
+.tool-btn {
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    color: #475569;
+    padding: 10px 24px;
+    border-radius: 50px; /* Pill shape */
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 auto;
+}
+
+.tool-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    border-color: #3b82f6;
+    color: #3b82f6;
+}
+
+.tool-btn:active {
+    transform: translateY(0);
+}
+
+/* State when Hint is ON */
+.hint-on {
+    background: #eff6ff;
+    border-color: #3b82f6;
+    color: #1d4ed8;
+}
+
+/*typing*/
+/* Typing Specific Layout */
+.typing-body { background-color: #d1e2f3; } /* Light blue theme like FastFingers */
+
+.typing-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.word-queue-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    font-size: 1.8rem;
+    line-height: 2.2;
+    height: 120px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.word { color: #4b5563; }
+.word.current { background: #e2e8f0; border-radius: 4px; padding: 0 5px; }
+.word.correct { color: #22c55e; }
+.word.wrong { color: #ef4444; text-decoration: underline; }
+
+.input-row {
+    display: flex;
+    gap: 15px;
+    background: #a9c7e4;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+#typing-input {
+    flex: 1;
+    padding: 15px;
+    font-size: 1.5rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    outline: none;
+}
+
+/* Result Card */
+.result-card {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.final-score { margin: 20px 0; }
+.final-score span { font-size: 5rem; font-weight: 800; color: #3b82f6; }
+
+.result-actions { display: flex; gap: 10px; margin-bottom: 20px; }
+.test-again-btn { 
+    width: 100%; 
+    padding: 15px; 
+    background: #3b82f6; 
+    color: white; 
+    border: none; 
+    border-radius: 8px; 
+    font-weight: bold; 
+    cursor: pointer;
+}
+
+/*typing2*/
+.input-row-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #a9c7e4;
+    padding: 20px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#typing-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.2rem;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    background: #f8fafc;
+    color: #1e293b;
+}
+
+.morse-preview-small {
+    height: 30px;
+    font-size: 1.5rem;
+    color: #3b82f6;
+    font-family: monospace;
+    text-align: center;
+}
+
+.reset-btn-wide {
+    padding: 12px;
+    background: #1e293b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Karaoke highlight inside the queue */
+.word span.char-done {
+    color: #22c55e;
+    font-weight: bold;
+}
+
+.word.current {
+    background: #e2e8f0;
+    padding: 0 8px;
+    border-radius: 4px;
+    border-bottom: 3px solid #3b82f6;
+}
+
+/* Error flash animation */
+.error-flash {
+    background-color: #fee2e2 !important;
+    color: #ef4444 !important;
+    transition: 0.1s;
+}
+
+/* Ensure the word queue scrolls if it gets too long */
+#word-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    height: 150px;
+    overflow-y: hidden; /* We scroll this via JS or keep flex-wrap */
+    align-content: flex-start;
+}
+
+.morse-preview-top {
+    height: 40px;
+    font-size: 2rem; /* Larger dots and dashes */
+    color: #3b82f6;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    letter-spacing: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    min-height: 40px; /* Prevents layout jumping when empty */
+}
+
+/* Ensure the input box below it is clean */
+#typing-input {
+    border-top: 2px solid #e2e8f0;
+    background: #ffffff;
+    padding: 15px;
+    font-weight: 700;
+}
+
+.result-card-styled {
+    position: relative;
+    background: white;
+    width: 360px;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.close-modal {
+    position: absolute;
+    top: 5px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: white; /* Matches header */
+    cursor: pointer;
+    z-index: 10;
+}
+
+.result-header {
+    background: #5a8eb3; 
+    color: white;
+    padding: 12px 18px;
+    font-weight: bold;
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+.main-score-area {
+    text-align: center;
+    padding: 25px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.main-score-area span {
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: #6a9228; /* Professional green */
+}
+
+.result-actions-row {
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.share-btn-blue {
+    flex: 2;
+    background: #4267b2;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.retry-btn-gray {
+    flex: 1;
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*typing*/
+/* Stats Table Styling */
+.result-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.result-stats-table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.result-stats-table td:last-child {
+    text-align: right;
+    font-weight: bold;
+}
+
+/* Action Row */
+.result-actions-row {
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.share-btn-blue {
+    flex: 2;
+    background: #4267b2;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.retry-btn-gray {
+    flex: 1;
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*scroll unable typing mode*/
+/* Lock the viewport */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevents any scrolling */
+    height: 100%;
+    background-color: #f0f2f5; /* Match your app background */
+}
+
+/* Ensure your main container fills the screen without overflowing */
+.main-app-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*resize the page typing mode contents*/
+/* Reduce the gap below the navbar */
+.main-container {
+    padding-top: 5px !important; /* Extremely thin gap from header */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Tighten the stats (WPM/Time) area */
+.stats-row {
+    margin-top: 0;
+    margin-bottom: 5px; /* Minimal space before word queue */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 800px;
+    padding-left: 20px;
+}
+
+/*result*/
+.result-header {
+    background: #5a8eb3; 
+    color: white;
+    padding: 12px 18px;
+    font-weight: bold;
+    text-align: left;
+    position: relative; /* Anchor for the X button */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.close-x-btn {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8) !important;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.close-x-btn:hover {
+    color: white !important;
+}
+
+/*red flicker and shake for error typing and move the morse typer to the box*/
+/* Red Flicker Animation */
+.flicker-red {
+    animation: flicker 0.3s ease-in-out;
+}
+
+@keyframes flicker {
+    0% { background-color: transparent; }
+    50% { background-color: rgba(239, 68, 68, 0.4); transform: translateX(-5px); }
+    100% { background-color: transparent; transform: translateX(0); }
+}
+
+/* Morse Preview inside the Typing Box */
+/* Red Flicker Animation */
+.flicker-red {
+    animation: flicker 0.3s ease-in-out;
+}
+
+@keyframes flicker {
+    0% { background-color: transparent; }
+    50% { background-color: rgba(239, 68, 68, 0.4); transform: translateX(-5px); }
+    100% { background-color: transparent; transform: translateX(0); }
+}
+
+/* Morse Preview inside the Typing Box */
+.input-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+}
+
+#typing-input {
+    width: 100%;
+    padding-right: 80px; /* Make room for the morse indicator */
+}
+
+#morse-preview {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+    pointer-events: none; /* User can't click it */
+    z-index: 10;
+}
+
+.input-wrapper {
+    position: relative; /* Anchor for the indicator */
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#typing-input {
+    width: 100%;
+    height: 70px;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #334155;
+    padding: 0 20px;
+}
+
+/* Position the Dots/Dashes precisely in the middle of the box */
+#morse-preview {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: monospace;
+    font-size: 2rem;
+    color: #3b82f6; /* Blue for contrast */
+    letter-spacing: 4px;
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* Flicker effect for wrong letters */
+.flicker-red {
+    animation: shakeRed 0.3s ease-in-out;
+}
+
+@keyframes shakeRed {
+    0%, 100% { background-color: white; transform: translateX(0); border-color: #e2e8f0; }
+    25% { background-color: #fee2e2; transform: translateX(-6px); border-color: #ef4444; }
+    75% { background-color: #fee2e2; transform: translateX(6px); border-color: #ef4444; }
+}
+
+/*indicator typing*/
+.qwerty-input-wrapper {
+    width: 100%;
+    max-width: 600px;
+    height: 70px;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 0 20px; /* Padding on the left like a real text box */
+    overflow: hidden;
+}
+
+.typing-display {
+    position: relative;
+    display: flex;
+    justify-content: center; /* Centers horizontal */
+    align-items: center;     /* Centers vertical */
+}
+
+#backspace-btn {
+    /* Reset all button styling */
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    margin-left: 450px;
+    
+    
+    /* Font Styling */
+    color: rgba(0, 0, 0, 0.2); /* Very faint grey so it doesn't distract */
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1.75rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    
+    /* Positioning */
+    position: absolute;
+    z-index: 5;
+    transition: color 0.2s ease;
+}
+
+#backspace-btn:hover {
+    color: #e74c3c; /* Turns red only when you hover over it */
+}
+
+/*backspacemask*/
+.ui-mask {
+    width: 100%;
+    height: 100px;
+    background-color: #D6E4F0; /* Use your EXACT background blue hex here */
+    position: absolute;
+    bottom: -50px; 
+    z-index: 10;
+}
+
+#typed-text {
+    color: #334155;
+    white-space: pre; /* Preserves spaces */
+}
+
+#morse-cursor {
+    color: #3b82f6;
+    margin-left: 4px;
+    min-width: 20px; /* Prevents jumping when empty */
+    letter-spacing: 2px;
+}
+
+/* Flicker effect now applies to the whole wrapper */
+.flicker-red {
+    animation: qwertyShake 0.3s ease-in-out;
+}
+
+@keyframes qwertyShake {
+    0%, 100% { background-color: white; border-color: #e2e8f0; }
+    25% { background-color: #fee2e2; border-color: #ef4444; transform: translateX(-4px); }
+    75% { background-color: #fee2e2; border-color: #ef4444; transform: translateX(4px); }
+}
+
+/*queue wrong word*/
+/* Normal state for the active word */
+.word.current {
+    color: #475569; /* Neutral Slate */
+    position: relative;
+}
+
+/* THE RED INDICATOR: When any part of the word is wrong */
+.word.current.is-wrong, 
+.word.current.is-wrong span {
+    color: #ef4444 !important; 
+    background: none !important; /* Removes the heavy overlay */
+    text-decoration: none !important; /* Removes underlines/squiggles */
+}
+
+/* Correct letters (only show if word is not currently wrong) */
+.word.current:not(.is-wrong) .char-done {
+    color: #22c55e !important;
+}
+
+/* Past Word Styles */
+.word.correct {
+    color: #22c55e !important; /* Persistent Green */
+}
+
+.word.wrong {
+    color: #ef4444 !important; /* Persistent Red */
+}
+
+/* Current Word Styles */
+.word.current {
+    color: #475569; /* Neutral Slate while typing */
+}
+
+.word.current.is-wrong {
+    color: #ef4444 !important; /* Red if you mess up */
+}
+
+.word.current:not(.is-wrong) .char-done {
+    color: #22c55e !important; /* Green progress for current word */
+}
+
+/* word */
+.text.success {
+    font-size: 1.2rem;
+    color: #22c55e;
+    font-weight: bold;
+}
+
+.text.danger {
+    font-size: 1.2rem;
+    color: #ef4444;
+    font-weight: bold;
+}
+
+/* timer and restart style*/
+/* Container bar */
+.typing-stats-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+}
+
+/* The Timer Card */
+.stat-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 6px 14px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 65px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.stat-label {
+    font-size: 9px;
+    font-weight: 800;
+    color: #94a3b8;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin-bottom: 2px;
+}
+
+.stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    font-variant-numeric: tabular-nums; /* Prevents text jumping */
+}
+
+/* The Stylized Reset Button */
+.restart-icon-btn {
+    background: #f1f5f9;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.restart-icon-btn:hover {
+    background: #3b82f6; /* MorsePro Blue */
+    color: #ffffff;
+    border-color: #3b82f6;
+    transform: rotate(-20deg);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+.restart-icon-btn:active {
+    transform: scale(0.92);
+}
+
+/*word carousel like 10fastfinger*/
+#word-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    height: 95px; /* Fits 2 rows */
+    overflow: hidden; 
+    align-content: flex-start;
+    padding: 10px;
+    /* REMOVE scroll-behavior: smooth here */
+    scroll-behavior: auto !important; 
+}
+
+.word {
+    display: inline-block;
+    line-height: 40px;
+    transition: none !important; /* No color fading or sliding */
+}
+
+.word {
+    display: inline-block;
+    line-height: 40px; /* Give every word a consistent height */
+}
+
+/*profile on every page*/
+#user-display-name {
+    outline: none;
+    border-bottom: 1px dashed transparent;
+    transition: border-bottom 0.2s;
+    padding: 2px 5px;
+
+
+}
+
+/* Shows a line when the user hovers or clicks to edit */
+#user-display-name:hover, 
+#user-display-name:focus {
+    border-bottom: 1px dashed var(--white);
+    background: rgba(255, 255, 255, 0.05);
+    cursor: text;
+}
+
+/* The background dim */
+.modal-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+}
+
+
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Show the modal when this class is added */
+.modal-overlay.active {
+    display: flex;
+}
+
+/*profile*/
+/* Apply this to the container of the name and pencil */
+.user-info {
+    user-select: none;         /* Standard */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE10+ */
+    
+    /* Prevents the 'I-beam' text cursor from appearing */
+    cursor: default;           
+}
+
+/* Specifically prevent dragging the pencil icon image/font */
+.pencil-btn i, .pencil-btn img {
+    pointer-events: none; 
+    -webkit-user-drag: none;
+}
+
+/* Ensure the button still works but doesn't show a selection box */
+.pencil-btn {
+    outline: none;
+    -webkit-tap-highlight-color: transparent; /* Removes blue flash on mobile */
+}
+
+/*the mask to cover the leak of the result card and make it look like it's part of the page*/
+
+.ui-mask {
+    width: 100%;
+    height: 300px; /* Big enough to cover the leak */
+    background-color: #d1e2f3; /* MATCH THIS to your exact light blue background */
+    position: relative; 
+    z-index: 2; /* Sits above the leaking result, but below the card */
+    margin-top: 10px; /* Pull it up slightly to bridge the gap */
+}
+
+/* Ensure your result section is tucked behind it */
+/* Ensure the modal is hidden by default but shown when active */
+#result-modal.hidden {
+    display: none !important;
+}
+
+#result-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Dark background overlay */
+    z-index: 9999;
+    display: none; /* Controlled by JS */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Make sure the result card stays visible */
+.result-card-styled {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    min-width: 320px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Kill all mobile system menus and highlighting */
+body, .large-tap-zone, .typing-display {
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    touch-action: none !important; /* Stops the browser from 'waiting' to zoom */
+}
+
+/*mobile responsive for typing html and index html*/
+/* --- MOBILE RESPONSIVENESS --- */
+
+@media (max-width: 850px) {
+    /* Navbar Adjustments */
+    .nav-container {
+        flex-direction: column;
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        font-size: 0.9rem;
+    }
+
+    /* Index/Practice Page Adjustments */
+    .practice-layout-grid {
+        display: flex;
+        flex-direction: column; /* Stack sidebars above/below main box */
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .cheat-sheet-sidebar {
+        width: 100%;
+        max-height: 200px;
+        overflow-y: auto; /* Allow scrolling if list is long */
+    }
+
+    .side-left { order: 2; } /* Move numbers below the practice box */
+    .practice-main { order: 1; } /* Keep practice box at the top */
+    .side-right { order: 3; } /* Letters at the bottom */
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    /* Typing Page Adjustments */
+    .typing-container {
+        width: 95%;
+        margin: 10px auto;
+        padding: 15px;
+    }
+
+    .word-queue-card {
+        font-size: 1.5rem;
+        height: 100px;
+    }
+
+    .large-tap-zone {
+        height: 250px; /* Make it easier to hit on mobile */
+        font-size: 1.2rem;
+    }
+
+    /* Modal Adjustments */
+    .modal-content {
+        width: 90%;
+        padding: 20px;
+    }
+
+    /* Result Table (Typing Test) */
+    .result-stats-table td {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+}
+
+.sound-btn {
+    margin-right: 15px;
+    font-size: 1.2rem;
+    color: var(--text-color, #333);
+    transition: all 0.2s ease;
+}
+
+.sound-btn.muted {
+    color: #ef4444; /* Red color when muted */
+    opacity: 0.6;
+}
+
+.sound-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Prevent text selection and callouts on the tap zones */
+#tap-zone, #tap-zone-typing, .large-tap-zone {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Safari */
+    user-select: none;           /* Standard syntax */
+    touch-action: manipulation;  /* Disables double-tap to zoom */
+}
+
+/* --- EXTRA SMALL DEVICES (Phones) --- */
+@media (max-width: 480px) {
+    .nav-links a {
+        font-size: 0.8rem;
+        padding: 5px 8px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .user-info {
+        display: none; /* Hide name to save space, keep avatar only */
+    }
+
+    .large-tap-zone {
+        height: 200px;
+        padding: 20px;
+    }
+
+    /* Hide the cheat sheets entirely on tiny screens to avoid clutter */
+    .cheat-sheet-sidebar {
+        display: none;
+    }
+}
+
+/*THE USERNAME ENTRY*/
+/* Dark background that covers the screen */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+/* When JS adds .active, it pops up */
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    background: #ffffff; /* Dark theme */
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    border: 1px solid #334155;
+}
+
+#name-input {
+    width: 100%;
+    padding: 12px;
+    margin: 20px 0;
+    background: #0f172a;
+    border: 1px solid #475569;
+    color: #22c55e; /* Classic Morse Green */
+    font-family: monospace;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: none;
+}
+
+.btn-primary { background: #22c55e; color: black; font-weight: bold; }
+.btn-secondary { background: #475569; color: white; }

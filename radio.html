@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MorsePro | Audio Receiver</title>
+    <link rel="stylesheet" href="radio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">📻 Morse<span>Pro</span></div>
+
+            <div class="nav-links">
+                <a href="index.html">1.Practice</a>
+                <a href="multiplayer.html">2.Multiplayer</a>
+                <a href="radio.html" class="active">3.Radio</a>
+                <a href="typing.html">4.SpeedTest</a>
+                <a href="writing.html">5.FreeWriting</a>
+            </div>
+
+            <div class="user-profile">
+                <div class="user-info">
+                    <span id="user-display-name">Guest</span>
+                </div>
+                <div class="user-avatar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Signal Receiver</h1>
+            <p>Intercept the transmission</p>
+        </header>
+
+        <div class="mode-selector">
+            <button class="mode-btn active" id="btn-letters" onclick="changeMode('letters')">Letters</button>
+            <button class="mode-btn" id="btn-words" onclick="changeMode('words')">Words</button>
+        </div>
+
+        <div class="radio-monitor-zone">
+            <ul id="waveform" class="wave-menu">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div id="start-overlay" class="overlay">
+                <div class="overlay-content">
+                    <i class="fas fa-satellite-dish"></i>
+                    <h2>COMMUNICATIONS OFFLINE</h2>
+                    <p>Ready to receive incoming Morse signals?</p>
+                    <button id="initialize-btn" class="init-btn" onclick="startRadioTest()">
+                        INITIALIZE TRANSMISSION
+                    </button>
+                </div>
+            </div>
+
+            <div id="radio-interface" class="hidden">
+            </div>
+            <div id="signal-status">OFFLINE</div>
+        </div>
+
+        <div id="interaction-zone">
+            <div id="word-input-container">
+                <input type="text" id="guess-input" class="guess-input" placeholder="TYPE SIGNAL..." autocomplete="off">
+            </div>
+
+            <div id="letter-grid" class="hidden">
+            </div>
+        </div>
+
+        <button class="replay-btn" onclick="playSignalLogic(true)">
+            <i class="fas fa-redo"></i> Replay Signal ()
+        </button>
+
+        <div class="stats-footer">
+            <div class="streak-box">
+                <span class="label">Streak</span>
+                <div id="streak-count" class="streak-val">0</div>
+            </div>
+            <div class="streak-box">
+                <span class="label">Best Streak</span>
+                <div id="best-streak" class="streak-val highlight">0</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mode-modal" class="overlay hidden">
+    <div class="overlay-content confirmation-box">
+        <i class="fas fa-exclamation-triangle" style="color: #fbbf24;"></i>
+        <h2>CHANGE FREQUENCY?</h2>
+        <p>Changing modes will reset your current signal and progress.</p>
+        <div class="modal-buttons">
+            <button id="confirm-mode-btn" class="init-btn">SWITCH MODE</button>
+            <button onclick="closeModeModal()" class="cancel-btn">CANCEL</button>
+        </div>
+    </div>
+</div>
+
+    <script src="radio.js"></script>
+</body>
+
+</html>

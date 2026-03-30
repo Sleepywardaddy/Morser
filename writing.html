@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Morse Paper</title>
+    <link rel="stylesheet" href="writing.css">
+</head>
+<body class="paper-theme">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">📻 Morse<span>Pro</span></div>
+
+            <div class="nav-links">
+                <a href="index.html">1.Practice</a>
+                <a href="multiplayer.html">2.Multiplayer</a>
+                <a href="radio.html">3.Radio</a>
+                <a href="typing.html">4.SpeedTest</a>
+                <a href="writing.html" class="active">5.FreeWriting</a>
+            </div>
+
+            <div class="user-profile">
+                <div class="user-info">
+                    <span id="user-display-name">Guest</span>
+                    <button id="edit-profile-btn" class="icon-btn">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                </div>
+                <div class="user-avatar"></div>
+            </div>
+        </div>
+    </nav>
+    <div class="paper-overlay"></div>
+
+    <main id="tap-zone" class="paper-wrapper">
+    <div id="paper-placeholder" class="placeholder">Begin transmission...</div>
+    <div id="writing-paper" class="paper-sheet"></div>
+    
+    <div id="input-preview"></div>
+</main>
+
+    <script src="writing.js"></script>
+</body>
+</html>
