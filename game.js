@@ -476,3 +476,30 @@ window.addEventListener('keyup', (e) => {
 
 window.addEventListener('DOMContentLoaded', initGame);
 
+
+function playFeedbackSFX(isCorrect) {
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    if (isCorrect) {
+        // Soothing: High pitch, soft fade
+        oscillator.frequency.setValueAtTime(880, audioCtx.currentTime); // A5 note
+        gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        document.body.style.backgroundColor = "#065f46"; // Green flash
+    } else {
+        // Disturbing: Low "thud" pitch
+        oscillator.frequency.setValueAtTime(110, audioCtx.currentTime); // A2 note
+        gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        document.body.style.backgroundColor = "#7f1d1d"; // Red flash
+    }
+
+    oscillator.start();
+    gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.5);
+    oscillator.stop(audioCtx.currentTime + 0.5);
+
+    // Reset background color after 300ms
+    setTimeout(() => { document.body.style.backgroundColor = ""; }, 300);
+}
